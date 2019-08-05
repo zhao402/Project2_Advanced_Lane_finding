@@ -1,5 +1,6 @@
 ## Advanced Lane Finding
 The goals / steps of this project are the following:
+
 •	Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
 
 •	Apply a distortion correction to raw images.
@@ -22,7 +23,8 @@ First, opencv findChessboradCorners function is used to find all the corners of 
 Distortion correction
 With the corner points and object points (Manually choose the object points), we apply opencv calibrateCamera function to find the distortion coefficients and do the distortion calibration.  One distortion-corrected image is shown in Figure 2.
 ![](output_images/calibration1.jpg)
-![](output_images/cameara_calibration_1.jpg)
+
+![](output_images/cameara_calibration_1.png)
 Color and Gradient Threshold
 Once distortion corrected coefficients are calculated, applying distortion correction on all the lane line images.  After distortion correction, next step is to apply threshold value to acquire binary images with the lane line information.
 I apply two threshold methods to find the lane line: color and gradient threshold.  
@@ -55,6 +57,7 @@ Applying opencv function getPerspectiveTransform to calculate the perspective tr
 ![](output_images/p8.png)
 Sliding Window to find the lane line
 After perspective transform, lane line points can be accurately fitted.  I use sliding window method to find the lane line points and do the poly fit for the lane line. The window margin size is 40, the total number of windows is nine.  Sliding windows shift from bottom to the top of the binary images for both left and right lane lines.  Based on the minipoints value, shifting the center of the window left and right to fit the lane line better.  After found all the useful points for the left and right lane lines, we apply poly fit to find the fitting coefficients of left and right lane lines.  The fitted lane lines are shown in the below:
+
 ![](output_images/c1.png)
 ![](output_images/c2.png)
 ![](output_images/c3.png)
